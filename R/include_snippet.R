@@ -90,59 +90,10 @@ includeAzureAppInsights <- function() {
 
   singleton(
     tags$head(
-      tags$script(src='azureinsights/ai.2.min.js'),
-      tags$script(src='azureinsights/azure_insights_loader_v5.js')
+      tags$script(src='azureinsights/ApplicationInsights-JS/ai.2.7.0.min.js'),
+      tags$script(src='azureinsights/azure_insights_loader_v2.js')
     )
   )
 }
 
-#' Sends an event to Application Insights
-#' @param session The \code{session} object passed to function given to \code{shinyServer}.
-#' @param name Name of the event.
-#' @param properties List of properties to track. \code{appId} is automatically inserted.
-#' @return Method sends data to client's browser; returns the sent list, invisibly.
-#'
-#' @export
-trackEvent <- function(session, name, properties) {
-  assertthat::assert_that(rlang::is_string(name))
-  assertthat::assert_that(is.list(properties), length(properties) > 0)
-  assertthat::assert_that(!is.null(names(properties)), all(names(properties) != ""))
-  msg <- jsonlite::toJSON(list(name=name, properties=properties), auto_unbox = TRUE, null='null')
-  session$sendCustomMessage('azure_track_event', msg)
-  invisible(msg)
-}
-
-
-
-demo <- function(launch.browser=FALSE, developer.mode=TRUE) {
-  iKey <- Sys.getenv('INSTRUMENTATIONKEY')
-  stopifnot(length(iKey) == 1, is_instrumentation_key(iKey))
-
-  ui <- fluidPage(
-    includeAzureAppInsights(),
-    tags$button("Click me!",
-      onClick=HTML("appInsights.trackEvent( {name: 'garble', properties: {moobs: 15, bacon: true}});" )
-    ),
-    actionButton("button","Click me too!")
-  )
-
-  server <- function(input, output, session) {
-    if (developer.mode) {
-      ## override package files, use "local" files
-      addResourcePath('azureinsights',  here::here('inst/www'))
-    }
-
-    startAzureAppInsights(session,
-      config(instrumentationKey = iKey, appId = "Test AzureAppInsights", autoTrackPageVisitTime=TRUE),
-      extras=list(started=lubridate::now()),
-      cookie.user = TRUE, include.ip = TRUE
-    )
-
-    observe({
-      trackEvent(session, "click", list("clicks"=input$button))
-    })
-
-  }
-  shiny::runApp(list(ui=ui, server=server), launch.browser = launch.browser)
-}
 
