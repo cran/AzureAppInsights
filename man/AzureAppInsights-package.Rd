@@ -27,5 +27,5 @@ Useful links:
 
 }
 \author{
-Stefan McKinnon Høj-Edwards <smhe@kamstrup.dk>
+Stefan McKinnon Edwards <smhe@kamstrup.dk>
 }

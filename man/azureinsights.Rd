@@ -16,10 +16,11 @@ startAzureAppInsights(
   heartbeat = 3e+05,
   extras = list(),
   include.ip = FALSE,
-  cookie.user = FALSE
+  cookie.user = FALSE,
+  debug = FALSE
 )
 
-includeAzureAppInsights()
+includeAzureAppInsights(version = c("2.8.14", "2.7.0"))
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
@@ -44,6 +45,10 @@ includeAzureAppInsights()
 
 \item{cookie.user}{Logical, when \code{TRUE} sets a cookie with a random string and submits this
 along with any tracking with the key \code{userid}.}
+
+\item{debug}{Logical, JS loader uses \code{console.log}.}
+
+\item{version}{Version of the Application Insights JavaScript SDK to load.}
 }
 \value{
 Methods sends data to client's browser; returns the sent list, invisibly.
@@ -55,7 +60,7 @@ and start the tracking with \code{startAzureAppInsights} in your \code{server}-f
 \section{Tracking users' ip-address}{
 
 Generally, Azure's Application Insight does not collect the users' ip-address,
-due to it being somewhat sensitive data (\href{https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-collection?tabs=net}{link}).
+due to it being somewhat sensitive data (\href{https://learn.microsoft.com/en-us/azure/azure-monitor/app/ip-collection?tabs=net}{link}).
 
 \code{\link{startAzureAppInsights}} however has the argument `include.ip` which,
 when set to \code{TRUE}, will add the entry \code{ip} to all trackings.
@@ -68,5 +73,5 @@ https://docs.microsoft.com/en-us/azure/azure-monitor/app/javascript
 and
 https://github.com/microsoft/ApplicationInsights-JS
 and
-https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-collection?tabs=net
+https://learn.microsoft.com/en-us/azure/azure-monitor/app/ip-collection?tabs=net
 }

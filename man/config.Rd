@@ -15,8 +15,8 @@ config(
 \arguments{
 \item{appId}{String for identifying your app, if you use same Application Insights for multiple apps.}
 
-\item{instrumentationKey, connectionString}{\code{connectionString} is preferred for newer
-accounts. Must contain both \code{InstrumentationKey} and \code{IngestionEndpoint}.}
+\item{instrumentationKey, connectionString}{Credentials for sending to Application Insights.
+\code{connectionString} is preferred for newer accounts and must contain both \code{InstrumentationKey} and \code{IngestionEndpoint}.}
 
 \item{autoTrackPageVisitTime}{Submits how long time a user spent on the *previous* page (see website for more information).}
 

@@ -1,9 +1,9 @@
 Package: AzureAppInsights
 Type: Package
 Title: Include Azure Application Insights in Shiny Apps
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
-    person("Stefan McKinnon", "Høj-Edwards", , "smhe@kamstrup.dk", c("aut","cre")),
+    person("Stefan McKinnon", "Edwards", , "smhe@kamstrup.com", c("aut","cre")),
     person("Kamstrup A/S", role = c("cph"))
     )
 Description: Imports Azure Application Insights for web pages into Shiny apps
@@ -16,13 +16,13 @@ Imports: shiny (>= 1.5.0), rlang (>= 0.4.11), assertthat (>= 0.2.0),
         jsonlite (>= 1.7.2), lubridate (>= 1.7)
 Encoding: UTF-8
 Suggests: testthat, here
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Collate: '0aux.R' 'AzureAppInsights-package.R' 'cfg.R' 'demo.R'
         'include_snippet.R' 'tracking.R'
 NeedsCompilation: no
-Packaged: 2021-10-01 10:56:10 UTC; smhe
-Author: Stefan McKinnon Høj-Edwards [aut, cre],
+Packaged: 2023-06-13 11:45:33 UTC; smhe
+Author: Stefan McKinnon Edwards [aut, cre],
   Kamstrup A/S [cph]
-Maintainer: Stefan McKinnon Høj-Edwards <smhe@kamstrup.dk>
+Maintainer: Stefan McKinnon Edwards <smhe@kamstrup.com>
 Repository: CRAN
-Date/Publication: 2021-10-01 11:10:02 UTC
+Date/Publication: 2023-06-13 14:40:08 UTC
